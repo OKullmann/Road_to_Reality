@@ -1,6 +1,44 @@
 Oliver Kullmann, 31.12.2009 (Swansea)
 --------------------------------------
 
+@Book{Penrose2004Physik,
+  author =       {Roger Penrose},
+  title =        {The Road to Reality},
+  publisher =    {Vintage Books},
+  year =         2004,
+  note =         {ISBN 0-099-44068-7},
+  annote =       {Vorhanden.}
+}
+
+
+Relevante Internetseiten:
+
+Allgemein:
+
+  Wikipedia
+  https://en.wikipedia.org/wiki/The_Road_to_Reality
+
+Korrekturen:
+
+  https://web.archive.org/web/20130912160048/http://www.roadsolutions.ox.ac.uk/
+
+scheint am ausfuehrlichsten.
+
+Loesungen zu Uebungsaufgaben:
+
+  https://sites.google.com/site/vascoprat/rtr-solutions
+
+scheint am besten.
+
+Ein Forum ist auf
+
+  http://www.roadtoreality.info/
+
+zu finden.
+
+
+---
+
 Kommandos:
 
 git pull
@@ -12,58 +50,75 @@ gitk
 
 ---------------------------------------------------
 
-@Book{Penrose2004Physik,
-  author =       {Roger Penrose},
-  title =        {The Road to Reality},
-  publisher =    {Vintage Books},
-  year =         2004,
-  note =         {ISBN 0-099-44068-7},
-  annote =       {Vorhanden.}
-}
+1       The roots of science
+1.1     The quest for the forces that shape the world
+1.2     Mathematical truth
+1.3     Is Plato's mathematical world "real"?
+1.4     Three worlds, and three deep mysteries
+1.5     The Good, the True, and the Beautiful
 
-Kopiert aus meinem "BuchAnalysisGeometrie.tex":
+2       An ancient theorem and a modern question
 
-\item\label{item:Durcharbeitung_Penrose2004Physik} Roger Penrose \textit{The Road to Reality} \cite{Penrose2004Physik} [Vorgabe: bis Ende 2018 bearbeitet]
-  \begin{enumerate}[1]
-  \item \Qu{The roots of science}
-    \begin{enumerate}[.1]
-    \item \Qu{The quest for the forces that shape the world}: In Bearbeitung.
-    \item \Qu{Mathematical truth}: In Bearbeitung.
-    \item \Qu{Is Plato's mathematical world `real'?}: In Bearbeitung.
-    \item \Qu{Three worlds, and three deep mysteries}: In Bearbeitung.
-    \item \Qu{The Good, the True, and the Beautiful}: In Bearbeitung.
-    \end{enumerate}
-  \item \Qu{An ancient theorem and a modern question}
-  \item \Qu{Kinds of number in the physical world}
-  \item \Qu{Magical complex numbers}
-  \item \Qu{Geometry of logarithms, powers, and roots}
-  \item \Qu{Real-number calculus}
-  \item \Qu{Complex-number calculus}
-  \item \Qu{Riemann surfaces and complex mappings}
-  \item \Qu{Fourier decomposition and hyperfunctions}
-  \item \Qu{Surfaces}
-  \item \Qu{Hypercomplex numbers}
-  \item \Qu{Manifolds of $n$ dimensions}
-  \item \Qu{Symmetry groups}
-  \item \Qu{Calculus on manifolds}
-  \item \Qu{Fibre bundles and gauge connections}
-  \item \Qu{The ladder of infinity}
-  \item \Qu{Spacetime}
-  \item \Qu{Minkowskian geometry}
-  \item \Qu{The classical fields of Maxwell and Einstein}
-  \item \Qu{Lagrangians and Hamiltonians}
-  \item \Qu{The quantum particle}
-  \item \Qu{Quantum algebra, geometry, and spin}
-  \item \Qu{The entangled quantum world}
-  \item \Qu{Dirac's electron and antiparticles}
-  \item \Qu{The standard model of particle physics}
-  \item \Qu{Quantum field theory}
-  \item \Qu{The Big Bang and its thermodynamic legacy}
-  \item \Qu{Speculative theories of the early univers}
-  \item \Qu{The measurement paradox}
-  \item \Qu{Gravity's role in quantum state reduction}
-  \item \Qu{Supersymmetry, supra-dimensionality, and strings}
-  \item \Qu{Einstein's narrower path; loop variables}
-  \item \Qu{More radical perspectives; twistor theory}
-  \item \Qu{Where lies the road to reality?}
-  \end{enumerate}
+3       Kinds of number in the physical world
+
+4       Magical complex numbers
+
+5       Geometry of logarithms, powers, and roots
+
+6       Real-number calculus
+
+7       Complex-number calculus
+
+8       Riemann surfaces and complex mappings
+
+9       Fourier decomposition and hyperfunctions
+
+10      Surfaces
+
+11      Hypercomplex numbers
+
+12      Manifolds of n dimensions
+
+13      Symmetry groups
+
+14      Calculus on manifolds
+
+15      Fibre bundles and gauge connections
+
+16      The ladder of infinity
+
+17      Spacetime
+
+18      Minkowskian geometry
+
+19      The classical fields of Maxwell and Einstein
+
+20      Lagrangians and Hamiltonians
+
+21      The quantum particle
+
+22      Quantum algebra, geometry, and spin
+
+23      The entangled quantum world
+
+24      Dirac's electron and antiparticles
+
+25      The standard model of particle physics
+
+26      Quantum field theory
+
+27      The Big Bang and its thermodynamic legacy
+
+28      Speculative theories of the early univers
+
+29      The measurement paradox
+
+30      Gravity's role in quantum state reduction
+
+31      Supersymmetry, supra-dimensionality, and strings
+
+32      Einstein's narrower path; loop variables
+
+33      More radical perspectives; twistor theory
+
+34      Where lies the road to reality?
