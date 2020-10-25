@@ -58,6 +58,13 @@ gitk
 1.5     The Good, the True, and the Beautiful
 
 2       An ancient theorem and a modern question
+2.1     The Phythagorean theorem
+2.2     Euclid's postulates
+2.3     Similar-areas proof of the Phythagorean theorem
+2.4     Hyperbolic geometry: conformal pictures
+2.5     Other representations of hyperbolic geometry
+2.6     Historical aspects of hyperbolic geometry
+2.7     Relation to physical space
 
 3       Kinds of number in the physical world
 
@@ -90,6 +97,13 @@ gitk
 17      Spacetime
 
 18      Minkowskian geometry
+18.1    Euclidian and Minkowskian 4-space
+18.2    The symmetry groups of Minkowski space
+18.3    Lorentzian orthogonality; the "clock paradox"
+18.4    Hyperbolic geometry in Minkowski space
+18.5    The celestial sphere as a Riemann sphere
+18.6    Newtonian energy and (angular) momentum
+18.7    Relativistic energy and (angular) momentum
 
 19      The classical fields of Maxwell and Einstein
 
