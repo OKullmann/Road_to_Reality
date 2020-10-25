@@ -1,29 +1,119 @@
-http://de.wikipedia.org/wiki/Zwillingsparadoxon
-Wikipedia: Zwillingsparadoxon
+  http://de.wikipedia.org/wiki/Zwillingsparadoxon
+  Wikipedia: Zwillingsparadoxon
 
 scheint ordentlich.
 
-https://en.wikipedia.org/wiki/Twin_paradox
-Wikipedia: Twin paradox
+  https://en.wikipedia.org/wiki/Twin_paradox
+  Wikipedia: Twin paradox
 
 enthaelt zusaetzliche Information.
 
+---
 
-Es wird klar gesagt, dass die Beschleunigung hier keine Rolle spielt.
+Das grundlegende Szenario:
 
-Dies wird auch am Ende von Abschnitt 18.3 gesagt.
+                 R|B
+      X|A ------------------ Y|A'
+
+  Zwei Raumstationen X, Y, die sich (relativ) in Ruhe befinden.
+
+  Zwei Uhren A, B:
+   - A bleibt auf X,
+   - B bewegt sich in R von X nach Y und zurueck.
+
+  Eine feste Geschwindigkeit 0<v<c fuer die beiden Reisen wird
+  angenommen (zunaechst werden Beschleunigungen vernachlaessigt);
+  v bezieht sich auf X (und Y).
+
+  Gemaess v und dem Abstand d>0 zwischen X und Y wird fuer die Hinreise
+  die Zeit
+
+    t = d/v
+
+  verwendet, und insgesamt die Zeit 2t, d.h.:
+
+    Sei A0 der Abreisezeitpunkt, A2 der Rueckkehrzeitpunkt. Dann
+
+      A2 - A0 = 2t.
+
+  Sei B0 = A0, und sei B2 der Rueckkehrzeitpunkt.
+  Gemaess der Zeitdilatation ist
+
+      B2 - B0 < 2t.
+
+  Das Paradoxon: Betrachtet man nur kinematische Groessen, dann sieht
+  der Reiseverlauf der Uhr B von X aus betrachtet genau gleich dem
+  "Reiseverlauf" der Uhr A von R aus betrachtet. Somit waere dann
+  A2 - A0 < B2 - B0.
 
 
+  Genauere Betrachtung: Eine mit A synchronisierte Uhr A' befindet
+  sich auf Y.
 
-Anmerkung OK: Die wirkliche Frage betrifft nicht Hin-UND-Rueckweg, sondern
-NUR den Hinweg (und damit die Realitaet der Raumfahrt).
+  Eine "Uhr" liefert eine natuerliche Zahl >= 0, und jeder Zeittick
+  erhoeht den Zaehler um 1. Die Werte von A, A', B sind also die
+  "Zeitpunkte", angegeben durch "Indices".
+
+  Synchronisierung zweier Uhren U, U' bedeutet, bei bekanntem
+  Abstand d der Uhren: Von U wird der aktuelle Wert U0 von U mittels
+  Lichtsignal an U' geschickt, und zum Ankunftszeitpunkt gilt
+    U' = U0 + d / c
+  (wobei d / c als ganzzahlig angenommen wird); dies in beiden
+  Richtungen. Dies gilt fuer beliebiges U0.
+
+  Sei A1 nun der Wert von A' bei der Ankunft von R. Dann gilt
+    A1 - A0 = t.
+  Und sei B1 der Wert von B bei der Ankunft von R, und
+    t' := B1 - B0.
+  Also gilt
+    B2 - B0 = 2 t'
+    t' < t
+    t' = t / gamma
+
+    gamma := 1 / (1 - beta^2)^(1/2)
+    beta  := v/c < 1.
+
+Z.B. fuer beta = 3/5 erhaelt man gamma = 5/4, und somit t' = t * 4/5.
+
+---
+
+
+Es wird gesagt (Wikipedia), dass die Beschleunigung hier keine Rolle
+spielt. Dies wird auch am Ende von Abschnitt 18.3 gesagt.
+
+Dies kann aber nur bedeuten, dass die Berechnung von t' immer (auch
+bei Beschleunigung) im Rahmen der speziellen Relativitaetstheorie
+geschehen kann, wobei aber hier nur X,Y ein Inertialsystem bilden,
+NICHT aber R.
+
+Im Szenario, wo R einfach mit konstanter Geschwindigkeit v an X, Y
+vorbeifliegt (am einfachsten "hindurch"), nur die Hinrichtung
+betrachtet wird, und die Uhrenablesung bloss durch Austausch von
+Lichtsignalen (Radiosignalen) geschieht, also keine Beschleunigung
+mehr sichtbar ist, ist die Asymmetrie von X,Y gegenueber R nicht mehr
+so sichtbar, aber wohl immer noch vorhanden.
+
+---
+
+Anmerkung OK: Die wirkliche Frage betrifft nicht Hin-UND-Rueckweg,
+sondern NUR den Hinweg (und damit die Realitaet der Raumfahrt).
 In
-https://en.wikipedia.org/wiki/Twin_paradox#No_twin_paradox_in_an_absolute_frame_of_reference
-No twin paradox in an absolute frame of reference
+  https://en.wikipedia.org/wiki/  Twin_paradox#No_twin_paradox_in_an_absolute_frame_of_reference
+  No twin paradox in an absolute frame of reference
+
 wird wohl kurz darauf eingegangen -- es wird von einem *absoluten*
 Referenzrahmen gesprochen:
 
-  In the relativity of Poincaré and Hendrik Lorentz, which assumes an absolute (though experimentally indiscernable) frame of reference, no twin paradox arises due to the fact that clock slowing (along with length contraction and velocity) is regarded as an actuality, hence the actual time differential between the reunited clocks.
+  "In the relativity of Poincaré and Hendrik Lorentz, which assumes
+   an absolute (though experimentally indiscernable) frame of
+   reference, no twin paradox arises due to the fact that clock slowing
+   (along with length contraction and velocity) is regarded as an
+   actuality, hence the actual time differential between the reunited
+   clocks."
+
+Leider konnte OK keine weiteren Einzelheiten hierzu finden.
+
+---
 
 Dies ist der Punkt: es geht nicht um "Messungen", sondern um die
 *Wirklichkeit*.
