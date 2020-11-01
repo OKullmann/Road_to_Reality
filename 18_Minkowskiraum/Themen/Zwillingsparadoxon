@@ -8,7 +8,7 @@ scheint ordentlich.
 
 enthaelt zusaetzliche Information.
 
----
+----------------------------------------------------------------------
 
 Das grundlegende Szenario:
 
@@ -77,6 +77,43 @@ Z.B. fuer beta = 3/5 erhaelt man gamma = 5/4, und somit t' = t * 4/5.
 
 ---
 
+Nun die Betrachtungen des dualen Geschehens (nur fuer eine Richtung):
+
+Eine Raumstation X, und zwei Raketen RA, RB.
+Die Bewegung ist eindimensional, RA und danach RB fliegen durch X hindurch:
+
+RB -----> RA -----> X
+
+Der "Abstand" zwischen RB und RA is d (dies muss genauer betrachtet werden.
+RA, RB bewegen sich mit gleicher Geschwindigkeit v (R ruht).
+
+In RA, RB befinden sich "synchronisierte Uhren" (muss genauer betrachtet
+werden), in X auch eine Uhr.
+
+Wenn RA, RB durch X hindurchfliegt, werden die Uhrensignale ausgetauscht.
+Welche Werte sieht X (eigene Uhr, und die von RA, RB) ?
+
+Zur Uhrensynchronisation von RA, RB: genau wie oben beschrieben.
+Der Abstand d zwischen RA, RB wird zuerst gemessen (mittels Hin-und-Her
+eines Lichtsignals), und dann werden die Uhren synchronisiert.
+RA, RB erfahren Laengenkontraktion, es sollte also von X aus der Abstand
+  d' = gamma * d
+sein (groesser).
+
+Sei A die uebermittelte Zeit von RA bei X, B die von RB bei X.
+Also t = B - A.
+Es wurde die Strecke d zuruecklegt (Raktenbezugssystem),
+also
+  t = d / v.
+
+Und sei X0 die Zeit in X bei Vorbeiflug RA, und X1 die Zeit in X bei RB.
+Also t' = X1 - X0.
+
+  t' = d' / v
+
+Da d' > d, gilt also t' > t.
+
+-----------------------------------------------------------------------
 
 Es wird gesagt (Wikipedia), dass die Beschleunigung hier keine Rolle
 spielt. Dies wird auch am Ende von Abschnitt 18.3 gesagt.
