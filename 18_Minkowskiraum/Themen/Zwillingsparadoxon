@@ -10,7 +10,7 @@ enthaelt zusaetzliche Information.
 
 ----------------------------------------------------------------------
 
-Das grundlegende Szenario:
+Das grundlegende Szenario (ZP):
 
                  R|B
       X|A ------------------ Y|A'
@@ -77,7 +77,8 @@ Z.B. fuer beta = 3/5 erhaelt man gamma = 5/4, und somit t' = t * 4/5.
 
 ---
 
-Nun die Betrachtungen des dualen Geschehens (nur fuer eine Richtung):
+Nun die Betrachtungen des dualen Geschehens (nur fuer eine Richtung),
+genannt (SP) (Single-Paradoxon):
 
 Eine Raumstation X, und zwei Raketen RA, RB.
 Die Bewegung ist eindimensional, RA und danach RB fliegen durch X hindurch:
@@ -102,7 +103,7 @@ sein (groesser).
 
 Sei A die uebermittelte Zeit von RA bei X, B die von RB bei X.
 Also t = B - A.
-Es wurde die Strecke d zuruecklegt (Raktenbezugssystem),
+Es wurde die Strecke d zuruecklegt (Raketenbezugssystem),
 also
   t = d / v.
 
@@ -112,6 +113,36 @@ Also t' = X1 - X0.
   t' = d' / v
 
 Da d' > d, gilt also t' > t.
+
+---
+
+Anmerkungen:
+
+Wenn man moechte, kann man die Informationsuebertragung zwischen Raketen und
+Raumstation auch physikalisch machen. Es gibt immer interne Zeitverluste (in
+unterschiedlichen Zeiten), die kann man aber beliebig klein machen.
+
+-----------------------------------------------------------------------
+
+Wie (SP) zeigt, spielt die "Geschichte" fuer zwei Inertialsysteme und ihre
+Beziehung zueinander eine entscheidende Rolle: Das Raumschiff in (SP)
+musste *irgendwann* einmal beschleunigen (und dieses "merkt" sich das
+System!).
+
+"Geschwindigkeit" mit ihrer Wirkung auf die eigene Uhr ist unabhaengig von
+der Richtung.
+
+Wie verhaelt sich dies nun bezueglich "geschachtelten Raumbahnhoefen und
+Raketen"?:
+
+Wir haben eine Basisstation B0, und relativ dazu in gleichmaessiger Bewegung
+die Basis B1, und die Raketen beziehen sich auf B1. Wenn nun die Rakete in
+die richtige Richtung fliegt, dann kann sie die Bewegung von B1 annulieren,
+also mit B0 synchronisiert sein -- also geht die Zeit dann wieder schneller,
+nicht langsamer ?!?
+
+Entweder liegen hier Fehler vor, oder dies weist auf eine absolute Raum-Zeit
+hin?!
 
 -----------------------------------------------------------------------
 
