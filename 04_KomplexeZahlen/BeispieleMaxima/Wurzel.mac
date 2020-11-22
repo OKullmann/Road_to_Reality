@@ -1,38 +1,90 @@
-/* Wurzeln von a+i b: */
+/* Wurzeln von [a,b] (entsprechend "a+i b")*/
 
 display2d : false;
 
+/* The Operationen mit komplexen Zahlen [a,b]: */
+cadd(x,y) := [x[1]+y[1], x[2]+y[2]];
+cmul(x,y) := combine([x[1]*y[1] - x[2]*y[2], x[1]*y[2] + x[2]*y[1]]);
+ccon(x)   := [x[1], -x[2]];
+casq(x)   := x[1]^2 + x[2]^2;
+cabs(x)   := sqrt(casq(x));
+crec(x)   := ccon(x) / casq(x);
+/* Beispiele:
+cadd([a,b],[c,d]);
+  [c+a,d+b]
+cmul([a,b],[c,d]);
+  [a*c-b*d,a*d+b*c]
+ccon([a,b]);
+  [a,-b]
+casq([a,b]);
+  b^2+a^2
+cabs([a,b]);
+  sqrt(b^2+a^2)
+crec([a,b]);
+  [a/(b^2+a^2),-b/(b^2+a^2)]
+*/
+
+
 sgn(x) := if x>=0 then 1 else -1;
 
-p(a,b) := sqrt(1/2*(a + sqrt(a^2 + b^2)));
-q(a,b) := sgn(b) * sqrt(1/2*(-a + sqrt(a^2 + b^2)));
+p(x) := sqrt(1/2*(x[1] + cabs(x)));
+h(x) := sqrt(1/2*(-x[1] + cabs(x)));
+q(x) := sgn(x[2]) * h(x);
 /* Anmerkungen fuer b=0:
-   p(a,0) = if a>=0 then sqrt(a) else 0
-   q(a,0) = if a>=0 then 0 else sqrt(-a)
+   p([a,0]) = if a>=0 then sqrt(a) else 0
+   q([a,0]) = if a>=0 then 0 else sqrt(-a)
 */
 
 /* Die beiden Wurzeln: */
-w1(a,b) := p(a,b) + %i * q(a,b);
-w2(a,b) := -w1(a,b);
+w1(x) := [p(x), q(x)];
+w2(x) := -w1(x);
 
 /*
 
 Anschauen von Wurzeln:
 
-plot2d([p(a,0), q(a,0)], [a,-10,10]);
-plot2d([p(a,1), q(a,1)], [a,-10,10]);
-plot2d([p(a,-1), q(a,-1)], [a,-10,10]);
+plot2d([p([a,0]), q([a,0])], [a,-10,10]);
+plot2d([p([a,1]), q([a,1])], [a,-10,10]);
+plot2d([p([a,-1]), q([a,-1])], [a,-10,10]);
 
-Testen auf Null:
+*/
 
-plot3d(realpart(w1(a,b)^2) - a, [a,-100,100], [b,-100,100]);
-plot3d(imagpart(w1(a,b)^2) - b, [a,-100,100], [b,-100,100]);
+/* Testen auf Null: */
 
-plot3d(realpart(w2(a,b)^2) - a, [a,-100,100], [b,-100,100]);
-plot3d(imagpart(w2(a,b)^2) - b, [a,-100,100], [b,-100,100]);
+rw12(x) := cmul(w1(x),w1(x))[1];
+iw12(x) := cmul(w1(x),w1(x))[2];
+rw22(x) := cmul(w2(x),w2(x))[1];
+iw22(x) := cmul(w2(x),w2(x))[2];
 
-Die Fehlermeldungen "atan2: atan2(0,0) is undefined." kommen von der
-numerischen Auswertung. Nicht bekannt, wie dies vermieden werden
-kann.
+/*
+plot3d(rw12([a,b]) - a, [a,-100,100], [b,-100,100]);
+plot3d(iw12([a,b]) - b, [a,-100,100], [b,-100,100]);
+
+plot3d(rw22([a,b]) - a, [a,-100,100], [b,-100,100]);
+plot3d(iw22([a,b]) - b, [a,-100,100], [b,-100,100]);
+*/
+
+/*
+
+Beweisen der Wurzeleigenschaften, mittels Fallunterscheidung:
+
+assume(b >= 0);
+rootscontract(cmul(w1([a,b]),w1([a,b])));
+  [a,b]
+forget(b >= 0);
+assume(b < 0);
+rootscontract(cmul(w1([a,b]),w1([a,b])));
+  [a,-sqrt(b^2)]
+is([a,-sqrt(b^2)] = [a,b]);
+  true
+
+forget(b < 0);
+assume(b >= 0);
+rootscontract(cmul(w2([a,b]),w2([a,b])));
+  [a,b]
+forget(b >= 0);
+assume(b < 0);
+rootscontract(cmul(w2([a,b]),w2([a,b])));
+  [a,-sqrt(b^2)]
 
 */
