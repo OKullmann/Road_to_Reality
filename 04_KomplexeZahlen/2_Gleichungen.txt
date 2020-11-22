@@ -1,0 +1,6 @@
+Rechnungen mit maxima im Unterverzeichnis "BeispieleMaxima".
+Aufrufen auf Kommandozeile mit "maxima".
+Dann z.B.
+
+  load("/home/kullmann/Road_to_Reality/04_KomplexeZahlen/BeispieleMaxima/Wurzel.mac");
+
