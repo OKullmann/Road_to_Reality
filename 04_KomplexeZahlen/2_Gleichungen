@@ -1,15 +1,20 @@
-Markus Fuchs, Berlin, 22.11.2020
-
 Eine komplexe Zahl wird algebraisch immer als a + i*b dargestellt wobei i im
 vorigen Kapitel definiert wird ausgehend von der grundsaetzlichen Definition.
 Menge IC ist ein Element von IR^2 [oder wird spaeter eingefuegt von Oliver].
 Penrose demonstriert in diesem Kapitel, dass die grundsaetzlichen
-algebraischen Rechenoperationen der Reellen Zahlen auch fuer komplexe Zahlen
+algebraischen Rechenoperationen der reellen Zahlen auch fuer komplexe Zahlen
 gelten und immer eine komplexe Loesung existiert.
 Zur Uebung gibt er Aufgabe 04.03, die hier als Textdarstellung mit sqrt() als
-Quadratwurzel des Arguments () wiedergegeben ist. Er weist im Begleittext darauf hin,
-dass es in der Regel mehr als 1 Loesung gibt, die dargestellte Formel hat damit
-allerdings Probleme - sh. Erlaeuterung ganz unten !
+Quadratwurzel des Arguments () wiedergegeben ist. Er weist im Begleittext
+darauf hin, dass es in der Regel mehr als 1 Loesung gibt, die dargestellte
+Formel hat damit allerdings Probleme - sh. Erlaeuterung ganz unten !
+
+------------------------------
+Uebungsaufgabe 04.03:
+
+Siehe
+  http://stanleyrabinowitz.com/bibliography/complexSquareRoot.pdf
+fuer eine ausfuehrliche Behandlung.
 
 Ausgehend von der komplexen Zahl:
 
@@ -65,3 +70,5 @@ Das ist nur umformungstechnisch korrekt oder und gilt fuer b>0. Bereits in (1) w
 negative Werte fuer b positiv gesetzt, so dass die Formel zumindest nicht direkt fuer
 Berechnungen genommen werden kann.
 Vielmehr entstehen die Loesungen a +i*b und a -i*b oder: a +i*sig b.  
+
+--------------------------------------------------------------------
