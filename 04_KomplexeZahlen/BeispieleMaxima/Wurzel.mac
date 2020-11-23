@@ -43,10 +43,23 @@ w2(x) := -w1(x);
 
 Anschauen von Wurzeln:
 
+plot2d([p([a,-2]), q([a,-2])], [a,-10,10]);
+plot2d([p([a,-1]), q([a,-1])], [a,-10,10]);
 plot2d([p([a,0]), q([a,0])], [a,-10,10]);
 plot2d([p([a,1]), q([a,1])], [a,-10,10]);
-plot2d([p([a,-1]), q([a,-1])], [a,-10,10]);
+plot2d([p([a,2]), q([a,2])], [a,-10,10]);
 
+plot3d(p([a,b]), [a,-10,10], [b,-10,10])$
+plot3d(q([a,b]), [a,-10,10], [b,-10,10])$
+
+plot3d(p([a,b]), [a,-10,10], [b,0,10])$
+plot3d(q([a,b]), [a,-10,10], [b,0,10])$
+
+plot3d([p([a,b]), q([a,b]), [a,-10,10], [b,0,10]], [gnuplot_pm3d,false], [color,black,yellow])$
+
+Error with plotting -- only using one colour; simpler example:
+
+plot3d([a+b, a-b, [a,-10,10], [b,-10,10]], [gnuplot_pm3d,false], [color,yellow,black])$
 */
 
 /* Testen auf Null: */
