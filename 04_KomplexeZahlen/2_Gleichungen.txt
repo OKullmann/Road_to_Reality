@@ -1,0 +1,8 @@
+Rechnungen mit maxima im Unterverzeichnis "BeispieleMaxima".
+Aufrufen auf Kommandozeile mit
+
+  > maxima --userdir="."
+
+Dann innnerhalb von Maxima:
+
+  load("Wurzel.mac");
