@@ -1,34 +1,67 @@
 Markus Fuchs, Berlin, 22.11.2020
 
-Eine komplexe Zahl wird algebraisch immer als a + i*b dargestellt wobei i im vorigen Kapitel definiert wird ausgehend von der grundsätzlichen Definition Menge IC ist ein Element von IR^2 [oder wird später eingefügt von Oliver].
-Penrose demonstriert in diesem Kapitel, dass die grundsätzlichen algebraischen Rechenoperationen der Reellen Zahlen auch für komplexe Zahlen gelten und immer eine komplexe Lösung existiert.
-Zur Übung gibt er Aufgabe 04.03, die hier als Textdarstellung mit SQRT() als Quadratwurzel des Arguments () wiedergegeben ist. Er weist im Begleittext darauf hin, dass es in der Regel mehr als 1 Lösung gibt, die dargestellte Formel hat damit allerdings Probleme - sh. Erläuterung ganz unten !
+Eine komplexe Zahl wird algebraisch immer als a + i*b dargestellt wobei i im
+vorigen Kapitel definiert wird ausgehend von der grundsaetzlichen Definition.
+Menge IC ist ein Element von IR^2 [oder wird spaeter eingefuegt von Oliver].
+Penrose demonstriert in diesem Kapitel, dass die grundsaetzlichen
+algebraischen Rechenoperationen der Reellen Zahlen auch fuer komplexe Zahlen
+gelten und immer eine komplexe Loesung existiert.
+Zur Uebung gibt er Aufgabe 04.03, die hier als Textdarstellung mit sqrt() als
+Quadratwurzel des Arguments () wiedergegeben ist. Er weist im Begleittext darauf hin,
+dass es in der Regel mehr als 1 Loesung gibt, die dargestellte Formel hat damit
+allerdings Probleme - sh. Erlaeuterung ganz unten !
 
-Ausgehend von der komlexen Zahl:
+Ausgehend von der komplexen Zahl:
 
-(1) SQRT( 1/2*( a + SQRT( a² + b² ))) + i* SQRT( 1/2*( -a + SQRT( a² + b² )))              
+(1) sqrt( 1/2*( a + sqrt( a^2 + b^2 ))) + i* sqrt( 1/2*( -a + sqrt( a^2 + b^2 )))
+              
+soll ueberprueft werden, ob die Quadrierung von (1) den Ausdruck a + i*b ergibt.
 
-Soll überprüft werden, ob die Quadrierung von (1) den Ausdruck a + i*b ergibt.
+(2) (sqrt( 1/2*( a + sqrt( a^2 + b^2 ))) + i* sqrt( 1/2*( -a + sqrt( a^2 + b^2 ))))^2
 
-(2) (SQRT( 1/2*( a + SQRT( a² + b² ))) + i* SQRT( 1/2*( -a + SQRT( a² + b² ))))² | dies kann nach der 1.bin.Formel aufgelöst werden (x+y)²=x²+2xy+y², damit entfällt im Realteil vorn die Wurzel (2a); beide Teile -real und imaginär- werden miteinander und mit 2 multipliziert (2b) und der Imaginärteil wird quadriert (2c):
-(2a) 1/2*( a + SQRT( a² + b² )      (2b)  2* SQRT( 1/2*( a + SQRT( a² + b² ))*i* SQRT( 1/2*( -a + SQRT( a² + b² )))   
-(2c)   (i* SQRT( 1/2*( -a + SQRT( a² + b² ))))²
-Damit wird (2c) durch Anwendung von i² = -1 dem Realteil hinzugerechnet, während (2b) imaginär bleibt, zunächst in der obigen Reihenfolge:
+dies kann nach der 1.bin.Formel umgeformt werden:
+ (x+y)^2 = x^2+2xy+y^2,
+damit entfaellt im Realteil vorn die Wurzel (2a); beide Teile -real und imaginaer-
+werden miteinander und mit 2 multipliziert (2b) und der Imaginaerteil wird
+quadriert (2c):
 
-(3) 1/2*( a + SQRT( a² + b² ) + 2*i* SQRT( 1/2*( a + SQRT( a² + b² )) * SQRT( 1/2*( -a + SQRT( a² + b² )) + (-1)* 1/2*( -a + SQRT( a² + b² ))
+(2a) 1/2*( a + sqrt( a^2 + b^2 )
+(2b) 2* sqrt( 1/2*( a + sqrt( a^2 + b^2 ))*i* sqrt( 1/2*( -a + sqrt( a^2 + b^2 )))   
+(2c) (i* sqrt( 1/2*( -a + sqrt( a^2 + b^2 ))))^2
+
+Damit wird (2c) durch Anwendung von i^2 = -1 dem Realteil hinzugerechnet, waehrend (2b)
+imaginaer bleibt, zunaechst in der obigen Reihenfolge:
+
+(3) 1/2*( a + sqrt( a^2 + b^2 ) + 2*i* sqrt( 1/2*( a + sqrt( a^2 + b^2 )) *
+    sqrt( 1/2*( -a + sqrt( a^2 + b^2 )) + (-1)* 1/2*( -a + sqrt( a^2 + b^2 ))
 
 Und nach Zusammenfassung der Realteile:
-(4) a/2  + SQRT( a² + b² )/2 + a/2 - SQRT( a² + b² )/2   +   2*i* SQRT( 1/2*( a + SQRT( a² + b² )) * SQRT( 1/2*( -a + SQRT( a² + b² )).
 
-Im Realteil heben sich die Wurzel-Terme auf. Im Imaginärteil werden die Abschnitte unter den Wurzeln mit 1/2 ausmultipliziert:
-(5) a/2 + a/2   +   2*i* SQRT((a/2 + SQRT( a² + b²)/2  * ((-a/2) + SQRT( a² + b²)/2)    | Ausmultiplizieren unter der imaginären Wurzel x= SQRT((a²+b²)/2); y= a/2) (x+y)*(x-y)= x²-y² ergibt:
+(4) a/2  + sqrt( a^2 + b^2 )/2 + a/2 - sqrt( a^2 + b^2 )/2   +
+    2*i* sqrt( 1/2*( a + sqrt( a^2 + b^2 )) * sqrt( 1/2*( -a + sqrt( a^2 + b^2 )).
 
-(6) a/2 + a/2   +   2*i* SQRT((a²+b²)/4 - a²/4)  wobei sich unter der Wurzel a²/4 und -a²/4 wegheben:
+Im Realteil heben sich die Wurzel-Terme auf. Im Imaginaerteil werden die Abschnitte
+unter den Wurzeln mit 1/2 ausmultipliziert:
 
-(7) a           +   2*i* SQRT( b²/4)
+(5) a/2 + a/2   +   2*i* sqrt((a/2 + sqrt( a^2 + b^2)/2  *
+    ((-a/2) + sqrt( a^2 + b^2)/2)
+
+Ausmultiplizieren unter der "imaginaeren Wurzel"
+
+  x= sqrt((a^2+b^2)/2); y= a/2) (x+y)*(x-y)= x^2-y^2
+
+ergibt:
+
+(6) a/2 + a/2   +   2*i* sqrt((a^2+b^2)/4 - a^2/4)
+
+wobei sich unter der Wurzel a^2/4 und -a^2/4 wegheben:
+
+(7) a           +   2*i* sqrt( b^2/4)
 
 (8) a           +   2*i* b/2
 (9) a           +   i*b
 
-Das ist nur umformungstechnisch korrekt oder und gilt für b>0. Bereits in (1) werden negative Werte für b positiv gesetzt, so dass die Formel zumindest nicht direkt für Berechnungen genommen werden kann.
-Vielmehr entstehen die Lösungen a +i*b und a -i*b oder: a +i*sig b.  
+Das ist nur umformungstechnisch korrekt oder und gilt fuer b>0. Bereits in (1) werden
+negative Werte fuer b positiv gesetzt, so dass die Formel zumindest nicht direkt fuer
+Berechnungen genommen werden kann.
+Vielmehr entstehen die Loesungen a +i*b und a -i*b oder: a +i*sig b.  
