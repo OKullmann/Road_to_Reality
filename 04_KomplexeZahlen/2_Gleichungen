@@ -11,7 +11,8 @@ Ausgehend von der komlexen Zahl:
 Soll überprüft werden, ob die Quadrierung von (1) den Ausdruck a + i*b ergibt.
 
 (2) (SQRT( 1/2*( a + SQRT( a² + b² ))) + i* SQRT( 1/2*( -a + SQRT( a² + b² ))))² | dies kann nach der 1.bin.Formel aufgelöst werden (x+y)²=x²+2xy+y², damit entfällt im Realteil vorn die Wurzel (2a); beide Teile -real und imaginär- werden miteinander und mit 2 multipliziert (2b) und der Imaginärteil wird quadriert (2c):
-(2a) 1/2*( a + SQRT( a² + b² )      (2b)  2* SQRT( 1/2*( a + SQRT( a² + b² ))*i* SQRT( 1/2*( -a + SQRT( a² + b² )))   (2c)   (i* SQRT( 1/2*( -a + SQRT( a² + b² ))))²
+(2a) 1/2*( a + SQRT( a² + b² )      (2b)  2* SQRT( 1/2*( a + SQRT( a² + b² ))*i* SQRT( 1/2*( -a + SQRT( a² + b² )))   
+(2c)   (i* SQRT( 1/2*( -a + SQRT( a² + b² ))))²
 Damit wird (2c) durch Anwendung von i² = -1 dem Realteil hinzugerechnet, während (2b) imaginär bleibt, zunächst in der obigen Reihenfolge:
 
 (3) 1/2*( a + SQRT( a² + b² ) + 2*i* SQRT( 1/2*( a + SQRT( a² + b² )) * SQRT( 1/2*( -a + SQRT( a² + b² )) + (-1)* 1/2*( -a + SQRT( a² + b² ))
@@ -30,4 +31,4 @@ Im Realteil heben sich die Wurzel-Terme auf. Im Imaginärteil werden die Abschni
 (9) a           +   i*b
 
 Das ist nur umformungstechnisch korrekt oder und gilt für b>0. Bereits in (1) werden negative Werte für b positiv gesetzt, so dass die Formel zumindest nicht direkt für Berechnungen genommen werden kann.
-Vielmehr entstehen die Lösungen a +i*b und a -i*b oder: a +i*sigb.  
+Vielmehr entstehen die Lösungen a +i*b und a -i*b oder: a +i*sig b.  
