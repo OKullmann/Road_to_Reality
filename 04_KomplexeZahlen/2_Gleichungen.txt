@@ -27,59 +27,63 @@ Siehe
   http://stanleyrabinowitz.com/bibliography/complexSquareRoot.pdf
 fuer eine ausfuehrliche Behandlung.
 
-Ausgehend von der komplexen Zahl:
+Vorbereitung:
 
-(1) sqrt( 1/2*( a + sqrt( a^2 + b^2 ))) + i* sqrt( 1/2*( -a + sqrt( a^2 + b^2 )))
+sgn(x) := 1 fuer x >= 0, sonst -1 (x reelle Zahl).
+Also gilt fuer alle x:
+  sgn(x)^2 = 1, sgn(x) * abs(x) = x.
 
-soll ueberprueft werden, ob die Quadrierung von (1) den Ausdruck a + i*b ergibt.
+Ferner gilt (sqrt(x))^2 = abs(x).
 
-(2) (sqrt( 1/2*( a + sqrt( a^2 + b^2 ))) + i* sqrt( 1/2*( -a + sqrt( a^2 + b^2 ))))^2
 
-dies kann nach der 1.bin.Formel umgeformt werden:
- (x+y)^2 = x^2+2xy+y^2,
-damit entfaellt im Realteil vorn die Wurzel (2a); beide Teile -real und imaginaer-
-werden miteinander und mit 2 multipliziert (2b) und der Imaginaerteil wird
-quadriert (2c):
+Lemma: Seien a,b beliebige reelle Zahlen.
+Sei z wie folgt definiert:
 
-(2a) 1/2*( a + sqrt( a^2 + b^2 )
-(2b) 2* sqrt( 1/2*( a + sqrt( a^2 + b^2 ))*i* sqrt( 1/2*( -a + sqrt( a^2 + b^2 )))
-(2c) (i* sqrt( 1/2*( -a + sqrt( a^2 + b^2 ))))^2
+    z := sqrt(1/2*(a + sqrt(a^2 + b^2))) +
+         sgn(b) * i * sqrt(1/2*(-a + sqrt(a^2 + b^2))).
 
-Damit wird (2c) durch Anwendung von i^2 = -1 dem Realteil hinzugerechnet, waehrend (2b)
-imaginaer bleibt, zunaechst in der obigen Reihenfolge:
+Behauptung: z^2 = a + i*b.
 
-(3) 1/2*( a + sqrt( a^2 + b^2 ) + 2*i* sqrt( 1/2*( a + sqrt( a^2 + b^2 )) *
-    sqrt( 1/2*( -a + sqrt( a^2 + b^2 )) + (-1)* 1/2*( -a + sqrt( a^2 + b^2 ))
+Beweis:
 
-Und nach Zusammenfassung der Realteile:
+Sei Q := sqrt(a^2 + b^2) >= max(abs(a), abs(b)).
+Also
+    z = sqrt(1/2*(a+Q)) + sgn(b) * i * sqrt(1/2*(-a+Q))
+      = 1/sqrt(2) * (sqrt(a+Q) + sgn(b) * i * sqrt(-a+Q)).
 
-(4) a/2  + sqrt( a^2 + b^2 )/2 + a/2 - sqrt( a^2 + b^2 )/2   +
-    2*i* sqrt( 1/2*( a + sqrt( a^2 + b^2 )) * sqrt( 1/2*( -a + sqrt( a^2 + b^2 )).
+wobei z^2 = 1/2 * (sqrt(a+Q) + sgn(b) * i * sqrt(-a+Q))^2.
 
-Im Realteil heben sich die Wurzel-Terme auf. Im Imaginaerteil werden die
-Abschnitte unter den Wurzeln mit 1/2 ausmultipliziert:
+Es gilt a+Q >= 0, -a+Q >= 0.
 
-(5) a/2 + a/2   +   2*i* sqrt((a/2 + sqrt( a^2 + b^2)/2  *
-    ((-a/2) + sqrt( a^2 + b^2)/2) ???
+Nun gilt:
 
-Ausmultiplizieren unter der "imaginaeren Wurzel"
+    2 z^2 =
+    (sqrt(a+Q) + sgn(b) * i * sqrt(-a+Q))^2 =
+    (a+Q) + sgn(b) * sgn(b) 2i sqrt(a+Q) sqrt(-a+Q) - (-a+Q) =
+    2 a + sgn(b) * 2i sqrt((Q-a)(Q+a)) =
+    2 a + sgn(b) * 2i sqrt(Q^2 - a^2) =
+    2 a + sgn(b) * 2i sqrt(a^2 + b^2 - a^2) =
+    2 a + sgn(b) * 2i sqrt(b^2) = 2 (a + i b).
 
-  x= sqrt((a^2+b^2)/2); y= a/2) (x+y)*(x-y)= x^2-y^2 ???
+QED
 
-ergibt:
+Korollar: Die Gleichung
 
-(6) a/2 + a/2   +   2*i* sqrt((a^2+b^2)/4 - a^2/4)
+  z^2 = a + i b (a, b beliebig reell)
 
-wobei sich unter der Wurzel a^2/4 und -a^2/4 wegheben:
+hat genau eine Loesung fuer a = b = 0 (naemlich z = 0),
+ansonsten gibt es genau zwei Loesungen, naemlich
+  z, -z, wobei z wie im obigen Lemma.
 
-(7) a           +   2*i* sqrt( b^2/4)
+Beweis:
 
-(8) a           +   2*i* b/2
-(9) a           +   i*b
+Schon gezeigt: z^2 = a+ib.
+Also auch (-z)^2 = z^2 = a+ib.
+Da z # 0, gilt z # -z.
 
-Das ist nur umformungstechnisch korrekt oder und gilt fuer b>0. Bereits in (1)
-werden negative Werte fuer b positiv gesetzt, so dass die Formel zumindest
-nicht direkt fuer Berechnungen genommen werden kann.
-Vielmehr entstehen die Loesungen a +i*b und a -i*b oder: a +i*sig b.
+Eine quadratische Gleichung hat hoechstens zwei Loesungen.
+
+QED
+
 
 --------------------------------------------------------------------
