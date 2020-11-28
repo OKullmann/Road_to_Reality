@@ -9,6 +9,12 @@ ccon(x)   := [x[1], -x[2]];
 casq(x)   := x[1]^2 + x[2]^2;
 cabs(x)   := sqrt(casq(x));
 crec(x)   := ccon(x) / casq(x);
+
+/* n >= 0: */
+cpow(x,n) := if n<0 then crec(cpow(x,-n))
+  else if n=0 then [1,0] else if n=1 then x
+  else cmul(x, cpow(x,n-1));
+
 /* Beispiele:
 cadd([a,b],[c,d]);
   [c+a,d+b]
