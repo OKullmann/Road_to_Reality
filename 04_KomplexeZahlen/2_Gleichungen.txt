@@ -56,15 +56,15 @@ Und nach Zusammenfassung der Realteile:
 (4) a/2  + sqrt( a^2 + b^2 )/2 + a/2 - sqrt( a^2 + b^2 )/2   +
     2*i* sqrt( 1/2*( a + sqrt( a^2 + b^2 )) * sqrt( 1/2*( -a + sqrt( a^2 + b^2 )).
 
-Im Realteil heben sich die Wurzel-Terme auf. Im Imaginaerteil werden die Abschnitte
-unter den Wurzeln mit 1/2 ausmultipliziert:
+Im Realteil heben sich die Wurzel-Terme auf. Im Imaginaerteil werden die
+Abschnitte unter den Wurzeln mit 1/2 ausmultipliziert:
 
 (5) a/2 + a/2   +   2*i* sqrt((a/2 + sqrt( a^2 + b^2)/2  *
-    ((-a/2) + sqrt( a^2 + b^2)/2)
+    ((-a/2) + sqrt( a^2 + b^2)/2) ???
 
 Ausmultiplizieren unter der "imaginaeren Wurzel"
 
-  x= sqrt((a^2+b^2)/2); y= a/2) (x+y)*(x-y)= x^2-y^2
+  x= sqrt((a^2+b^2)/2); y= a/2) (x+y)*(x-y)= x^2-y^2 ???
 
 ergibt:
 
@@ -77,9 +77,9 @@ wobei sich unter der Wurzel a^2/4 und -a^2/4 wegheben:
 (8) a           +   2*i* b/2
 (9) a           +   i*b
 
-Das ist nur umformungstechnisch korrekt oder und gilt fuer b>0. Bereits in (1) werden
-negative Werte fuer b positiv gesetzt, so dass die Formel zumindest nicht direkt fuer
-Berechnungen genommen werden kann.
+Das ist nur umformungstechnisch korrekt oder und gilt fuer b>0. Bereits in (1)
+werden negative Werte fuer b positiv gesetzt, so dass die Formel zumindest
+nicht direkt fuer Berechnungen genommen werden kann.
 Vielmehr entstehen die Loesungen a +i*b und a -i*b oder: a +i*sig b.
 
 --------------------------------------------------------------------
