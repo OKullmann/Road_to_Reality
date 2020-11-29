@@ -10,10 +10,11 @@ casq(x)   := x[1]^2 + x[2]^2;
 cabs(x)   := sqrt(casq(x));
 crec(x)   := ccon(x) / casq(x);
 
-/* n >= 0: */
 cpow(x,n) := if n<0 then crec(cpow(x,-n))
   else if n=0 then [1,0] else if n=1 then x
   else cmul(x, cpow(x,n-1));
+
+cexp(x) := exp(x[1]) * [cos(x[2]), sin(x[2])];
 
 /* Beispiele:
 cadd([a,b],[c,d]);
@@ -28,6 +29,12 @@ cabs([a,b]);
   sqrt(b^2+a^2)
 crec([a,b]);
   [a/(b^2+a^2),-b/(b^2+a^2)]
+
+cpow([a,b],2);
+  [a^2-b^2,2*a*b]
+
+cexp([0,2*%pi]);
+  [1,0]
 */
 
 
