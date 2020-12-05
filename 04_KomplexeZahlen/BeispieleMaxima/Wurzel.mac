@@ -114,3 +114,45 @@ rootscontract(cmul(w2([a,b]),w2([a,b])));
   [a,-sqrt(b^2)]
 
 */
+/* Matrix-Darstellung von komplexen Zahlen [a,b]:
+
+  a -b
+  b a
+
+  =
+
+  |[a,b]| *
+
+    sin(alpha) -cos(alpha)
+    cos(alph)  sin(alph)
+
+  sin(alpha)^2 + cos(alpha)^2 = 1
+
+*/
+
+c2m(x) := matrix([x[1],-x[2]],[x[2],x[1]]);
+mcp(m) := matrix_size(m) = [2,2] and m[1,1] = m[2,2] and m[2,1] = -m[1,2];
+m2c(m) := [m[1,1], m[2,1]];
+
+/*
+
+  mcp(c2m([a,b]) + c2m([c,d]));
+    true
+  m2c(c2m([a,b]) + c2m([c,d]));
+    [c+a,d+b]
+
+  mcp(c2m([a,b]) . c2m([c,d]));
+    true
+  m2c(c2m([a,b]) . c2m([c,d]));
+    [a*c-b*d,a*d+b*c]
+  cmul([a,b],[c,d]);
+    [a*c-b*d,a*d+b*c]
+
+  mcp(invert(c2m([a,b])));
+    true
+  m2c(invert(c2m([a,b])));
+    [a/(b^2+a^2),-b/(b^2+a^2)]
+  crec([a,b]);
+    [a/(b^2+a^2),-b/(b^2+a^2)]
+
+*/
