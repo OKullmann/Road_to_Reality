@@ -1,3 +1,10 @@
+/* Aufruf mit
+
+  > maxima --userdir="."
+  % load("Wurzel.mac");
+
+*/
+
 /* Wurzeln von [a,b] (entsprechend "a+i b")*/
 
 display2d : false;
