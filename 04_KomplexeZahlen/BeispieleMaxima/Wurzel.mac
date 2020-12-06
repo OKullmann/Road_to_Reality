@@ -5,26 +5,44 @@
 
 */
 
-/* Wurzeln von [a,b] (entsprechend "a+i b")*/
+/* Die fundamentale Natur der komplexen Zahl ist die des Paares
+   (a,b) von reellen Zahlen; in Maxima wird dies durch die Liste
+   "[a,b]" dargestellt.
+
+   (Dies ist nur eine Annaeherung: leider hat Maxima keine Paare, Tripel,
+    Quadrupel, etc., sondern nur Listen, die *variable* Laenge haben.)
+
+   Die zwei fundamentalen zusaetzlichen Darstellungen sind die als
+     2x2 Matrizen,
+     2-Vektoren (immer Spaltenvektoren).
+
+   (Eine reelle Zahl als Tupel ist ein 1-Tupel, als Matrix ist eine 1x1-Matrix,
+    als Vektor ist ein 1-Vektor.)
+
+*/
 
 display2d : false;
 
 /* The Operationen mit komplexen Zahlen [a,b]: */
-cadd(x,y) := [x[1]+y[1], x[2]+y[2]];
+cadd(x,y) := [x[1]+y[1], x[2]+y[2]]; /* oder einfach x+y */
 cmul(x,y) := combine([x[1]*y[1] - x[2]*y[2], x[1]*y[2] + x[2]*y[1]]);
-ccon(x)   := [x[1], -x[2]];
+ccon(x)   := [x[1], -x[2]]; /* Konjugation */
 casq(x)   := x[1]^2 + x[2]^2;
-cabs(x)   := sqrt(casq(x));
-crec(x)   := ccon(x) / casq(x);
+cabs(x)   := sqrt(casq(x)); /* Absolutwert */
+crec(x)   := ccon(x) / casq(x); /* Reziprokwert */
 
+/* Potenzen mit ganzen Zahlen n: */
 cpow(x,n) := if n<0 then crec(cpow(x,-n))
   else if n=0 then [1,0] else if n=1 then x
   else cmul(x, cpow(x,n-1));
 
+/* Komplexe Exponentialfunktion */
 cexp(x) := exp(x[1]) * [cos(x[2]), sin(x[2])];
 
 /* Beispiele:
 cadd([a,b],[c,d]);
+  [c+a,d+b]
+[a,b]+[c,d];
   [c+a,d+b]
 cmul([a,b],[c,d]);
   [a*c-b*d,a*d+b*c]
@@ -45,8 +63,10 @@ cexp([0,2*%pi]);
 */
 
 
-sgn(x) := if x>=0 then 1 else -1;
+/* Wurzeln von komplexen Zahlen */
 
+/* Hilfsfunktionen: */
+sgn(x) := if x>=0 then 1 else -1;
 p(x) := sqrt(1/2*(x[1] + cabs(x)));
 h(x) := sqrt(1/2*(-x[1] + cabs(x)));
 q(x) := sgn(x[2]) * h(x);
@@ -121,6 +141,7 @@ rootscontract(cmul(w2([a,b]),w2([a,b])));
   [a,-sqrt(b^2)]
 
 */
+
 /* Matrix-Darstellung von komplexen Zahlen [a,b]:
 
   a -b
@@ -130,8 +151,10 @@ rootscontract(cmul(w2([a,b]),w2([a,b])));
 
   |[a,b]| *
 
-    sin(alpha) -cos(alpha)
-    cos(alph)  sin(alph)
+    cos(alpha) -sin(alpha)
+    sin(alpha)  cos(alpha)
+
+   wobei alpha der "Winkel" von [a,b] ist.
 
   sin(alpha)^2 + cos(alpha)^2 = 1
 
@@ -161,5 +184,129 @@ m2c(m) := [m[1,1], m[2,1]];
     [a/(b^2+a^2),-b/(b^2+a^2)]
   crec([a,b]);
     [a/(b^2+a^2),-b/(b^2+a^2)]
+
+*/
+
+/* Komplexe Zahlen als Vektoren */
+
+load("eigen");
+
+c2v(x) := columnvector(x);
+v2c(v) := [v[1][1], v[2][1]];
+
+/*
+
+v2c(c2m([a,b]) . c2v([c,d]));
+  [a*c-b*d,a*d+b*c]
+
+*/
+
+
+/* Der "Winkel" (das "Argument") von komplexen Zahlen
+
+  a -b
+  b a
+
+  =
+
+  |[a,b]| *
+
+    cos(alpha) -sin(alpha)
+    sin(alpha)  cos(alpha)
+
+   wobei alpha der Winkel von [a,b] ist (bestimmt modulo 2 pi).
+
+   (Anmerkung: sin(alpha)^2 + cos(alpha)^2 = 1.)
+
+   Der Winkel alpha von [a,b] ist also eine Zahl alpha in RR
+   mit
+
+     |[a,b]| * cos(alpha) = a
+     |[a,b]| * sin(alpha) = b.
+
+   Dies ist eindeutig modulo 2 pi fuer [a,b] # 0, waehrend fuer
+   [0,0] der Winkel beliebig ist.
+
+   Mittels der komplexen Exponentialfunktion werden die beiden Gleichungen
+   (aequivalent) zu einer zusammengefasst:
+
+     [a,b] = |[a,b]| * exp(i * alpha) = |[a,b]| * (cos(alpha) + i * sin(alpha)),
+
+   da ja
+
+     exp(i * alpha) = exp([0,alpha]) = [cos(alpha), sin(alpha)].
+
+   Die rechte Seite, als Term(!), wird als "Polardarstellung" von [a,b] bezeichnet.
+
+   Gegeben ein Winkel und die Laenge von einer komplexen Zahl z, so kann
+   z eindeutig rekonstruiert werden.
+   (Fuer Laenge 0 braucht man den Winkel ueberhaupt nicht, ansonsten kann man
+      k * 2 pi
+    fuer beliebige ganze k zum Winkel addieren, und erhaelt immer z.)
+
+   Wir normieren den Winkel in der Funktion arg_c([a,b]) auf das halboffene
+   Intervall [0, 2 pi).
+
+*/
+
+arg_c(x) := block([a : x[1], b : x[2]],
+  if a = 0 and b = 0 then und
+  else if a > 0 then
+    if b >= 0 then atan(b/a)
+    else 2*%pi + atan(b/a)
+  else if a < 0 then
+    if b >= 0 then %pi + atan(b/a)
+    else %pi + atan(b/a)
+  else
+    if b >= 0 then %pi / 2
+    else  3/2 * %pi);
+
+/*
+
+arg_c([0,0]);
+  und
+arg_c([1,0]);
+  0
+arg_c([0,1]);
+  %pi/2
+arg_c([-1,0]);
+  %pi
+arg_c([0,-1]);
+  (3*%pi)/2
+
+plot2d(arg_c(cexp([0,x])), [x,-10,10]);
+
+Die entsprechenden Winkel in Maxima, mittels der Polardarstellung:
+
+polarform(1);
+1
+(%i48) polarform(%i);
+(%o48) %e^((%i*%pi)/2)
+(%i49) polarform(-1);
+(%o49) %e^(%i*%pi)
+(%i51) polarform(-%i);
+(%o51) %e^-((%i*%pi)/2)
+
+
+Beweis der Gleichung zur Polarform:
+
+assume(a > 0);
+assume(b >= 0);
+rootscontract(cabs([a,b]) * cexp([0, arg_c([a,b])]));
+  [a,b]
+forget(b >= 0);
+assume(b < 0);
+rootscontract(cabs([a,b]) * cexp([0, arg_c([a,b])]));
+  [a,b]
+forget(a > 0);
+assume(a < 0);
+rootscontract(cabs([a,b]) * cexp([0, arg_c([a,b])]));
+  [-sqrt(a^2),-(sqrt(a^2)*b)/a]
+forget(b < 0);
+assume(b >= 0);
+rootscontract(cabs([a,b]) * cexp([0, arg_c([a,b])]));
+  [-sqrt(a^2),-(sqrt(a^2)*b)/a]
+is(-sqrt(a^2) = a);
+  true
 
 */
