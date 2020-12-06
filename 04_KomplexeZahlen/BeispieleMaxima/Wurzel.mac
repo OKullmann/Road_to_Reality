@@ -147,17 +147,6 @@ rootscontract(cmul(w2([a,b]),w2([a,b])));
   a -b
   b a
 
-  =
-
-  |[a,b]| *
-
-    cos(alpha) -sin(alpha)
-    sin(alpha)  cos(alpha)
-
-   wobei alpha der "Winkel" von [a,b] ist.
-
-  sin(alpha)^2 + cos(alpha)^2 = 1
-
 */
 
 c2m(x) := matrix([x[1],-x[2]],[x[2],x[1]]);
@@ -308,5 +297,43 @@ rootscontract(cabs([a,b]) * cexp([0, arg_c([a,b])]));
   [-sqrt(a^2),-(sqrt(a^2)*b)/a]
 is(-sqrt(a^2) = a);
   true
+
+*/
+
+/* Wir sehen nun, wie z=exp([a,b]) einfach zu interpretieren ist:
+
+     - Der Betrag von z (die Laenge) ist exp(a) > 0.
+     - Ein Winkel von z ist b.
+
+   Die Loesungen von exp([a,b]) = z (z#0 gegeben, a,b zu bestimmen) sind
+   also einfach wie folgt:
+
+     - a = log(|z|)
+     - b ist ein Winkel von z.
+
+*/
+
+/* Fuer ganzzahlige k: */
+clog(z,k) := [log(cabs(z)), arg_c(z) + k * 2*%pi];
+
+/*
+
+declare(n, integer);
+
+assume(a > 0);
+assume(b >= 0);
+radcan(cexp(clog([a,b],n)));
+  [a,b]
+forget(b >= 0);
+assume(b < 0);
+  [a,b];
+forget(a > 0);
+assume(a < 0);
+radcan(cexp(clog([a,b],n)));
+  [a,b]
+forget(b < 0);
+assume(b >= 0);
+radcan(cexp(clog([a,b],n)));
+  [a,b]
 
 */
