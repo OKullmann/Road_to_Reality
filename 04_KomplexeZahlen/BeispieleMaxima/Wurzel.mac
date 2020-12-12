@@ -32,9 +32,9 @@ cabs(x)   := sqrt(casq(x)); /* Absolutwert */
 crec(x)   := ccon(x) / casq(x); /* Reziprokwert */
 
 /* Potenzen mit ganzen Zahlen n: */
-cpow(x,n) := if n<0 then crec(cpow(x,-n))
+capow(x,n) := if n<0 then crec(capow(x,-n))
   else if n=0 then [1,0] else if n=1 then x
-  else cmul(x, cpow(x,n-1));
+  else cmul(x, capow(x,n-1));
 
 /* Komplexe Exponentialfunktion */
 cexp(x) := exp(x[1]) * [cos(x[2]), sin(x[2])];
@@ -55,7 +55,7 @@ cabs([a,b]);
 crec([a,b]);
   [a/(b^2+a^2),-b/(b^2+a^2)]
 
-cpow([a,b],2);
+capow([a,b],2);
   [a^2-b^2,2*a*b]
 
 cexp([0,2*%pi]);
@@ -337,3 +337,6 @@ radcan(cexp(clog([a,b],n)));
   [a,b]
 
 */
+
+/* a^b im k-ten Zweig: */
+cpow(a,b,k) := cexp(clog(a,k) * b);
