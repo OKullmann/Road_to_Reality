@@ -339,4 +339,17 @@ radcan(cexp(clog([a,b],n)));
 */
 
 /* a^b im k-ten Zweig: */
-cpow(a,b,k) := cexp(clog(a,k) * b);
+cpow(a,b,k) := cexp(cmul(clog(a,k), b));
+
+/* Testen auf Quadratwurzel:
+plot3d(cabs(cpow([a,b],[1/2, 0],0) - w1([a,b])), [a,-2,2],[b,0,2]);
+plot3d(cabs(cpow([a,b],[1/2, 0],1) - w1([a,b])), [a,-2,2],[b,-2,0]);
+plot3d(cabs(cpow([a,b],[1/2, 0],1) - w2([a,b])), [a,-2,2],[b,0,2]);
+plot3d(cabs(cpow([a,b],[1/2, 0],0) - w2([a,b])), [a,-2,2],[b,-2,0]);
+
+assume(a > 0);
+assume(b >= 0);
+radcan(cpow([a,b],[1,0],0));
+[a,b]
+
+*/
