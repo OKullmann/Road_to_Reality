@@ -338,6 +338,15 @@ radcan(cexp(clog([a,b],n)));
 
 */
 
+/* Fuer beliebiges z das eindeutige k mit
+     clog(cexp(z), k) = z :
+*/
+cbranch(z) := floor(z[2] / 2 / %pi);
+/*
+test(z) := cabs(clog(cexp(z), cbranch(z)) - z);
+plot3d(test([a,b]), [a,-2,2], [b,-2,2]);
+*/
+
 /* a^b im k-ten Zweig:
   log(a^b) = b * log(a) => exp(log(a^b)) = a^b = exp(b * log(a))
 */
