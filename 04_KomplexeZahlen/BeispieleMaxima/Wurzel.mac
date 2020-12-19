@@ -338,7 +338,9 @@ radcan(cexp(clog([a,b],n)));
 
 */
 
-/* a^b im k-ten Zweig: */
+/* a^b im k-ten Zweig:
+  log(a^b) = b * log(a) => exp(log(a^b)) = a^b = exp(b * log(a))
+*/
 cpow(a,b,k) := cexp(cmul(clog(a,k), b));
 
 /* Testen auf Quadratwurzel:
@@ -351,5 +353,17 @@ assume(a > 0);
 assume(b >= 0);
 radcan(cpow([a,b],[1,0],0));
 [a,b]
+
+"z^1" = cpow(z,[1,0],k) = exp(cmul(clog(z,k), [1,0])) = exp(clog(z,k)) = z. QED
+
+Wann gilt
+
+  cpow(cpow(z,z',k), z'', k') = cpow(z, cmul(z', z''), k'') ??
+
+Spezialfall:
+
+  cpow(cpow(z,z', k), crec(z'), k') = cpow(z, cmul(z', crec(z')), k'') = cpow(z, 1, k'') = z ?
+
+Gibt es immer solche k, k'? Wenn ja, dann welche?
 
 */
