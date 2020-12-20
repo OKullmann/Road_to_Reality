@@ -21,6 +21,9 @@
 */
 
 display2d : false;
+fpprec : 100;
+load("bf_fmin_cobyla")$
+
 
 /* The Operationen mit komplexen Zahlen [a,b]: */
 cadd(x,y) := [x[1]+y[1], x[2]+y[2]]; /* oder einfach x+y */
@@ -61,8 +64,41 @@ cexp([0,2*%pi]);
   [1,0]
 */
 
+/* Eigenschaften von cexp:
 
-/* Wurzeln von komplexen Zahlen */
+1) Auf reellen Zahlen identisch mit exp:
+
+cexp([x,0]) - [exp(x), 0];
+  [0,0]
+
+2) Fuer rein-imaginaere Argumente liegen die Werte auf dem Einheitskreis:
+
+cabs(cexp([0,x]));
+  sqrt(sin(x)^2+cos(x)^2)
+radcan(exponentialize(sqrt(sin(x)^2+cos(x)^2)));
+  1
+
+3) Uebersetzt Addition nach Multiplikation:
+
+radcan(exponentialize(cexp([a,b]+[c,d]) - cmul(cexp([a,b]), cexp([c,d]))));
+  [0,0]
+
+4) Ist vertraeglich mit komplexer Konjugation:
+
+cexp(ccon([a,b])) - ccon(cexp([a,b]));
+  [0,0]
+
+5) Uebersetzt Multiplikation nach Exponentiation:
+
+Siehe Anmerkunge zu cpow: cexp(z * z') = cexp(z)^z',
+wobei fuer exp(z)^z' = cpow(cexp(z), z', k) der Zweig
+  k = cbranch(z)
+gewaehlt wird.
+
+*/
+
+
+/* Quadratwurzeln von komplexen Zahlen */
 
 /* Hilfsfunktionen: */
 sgn(x) := if x>=0 then 1 else -1;
@@ -74,7 +110,7 @@ q(x) := sgn(x[2]) * h(x);
    q([a,0]) = if a>=0 then 0 else sqrt(-a)
 */
 
-/* Die beiden Wurzeln: */
+/* Die beiden Quadratwurzeln: */
 w1(x) := [p(x), q(x)];
 w2(x) := -w1(x);
 
@@ -99,24 +135,11 @@ plot3d([p([a,b]), q([a,b]), [a,-10,10], [b,0,10]], [gnuplot_pm3d,false], [color,
 Error with plotting -- only using one colour; simpler example:
 
 plot3d([a+b, a-b, [a,-10,10], [b,-10,10]], [gnuplot_pm3d,false], [color,yellow,black])$
-*/
 
-/* Testen auf Null: */
 
-rw12(x) := cmul(w1(x),w1(x))[1];
-iw12(x) := cmul(w1(x),w1(x))[2];
-rw22(x) := cmul(w2(x),w2(x))[1];
-iw22(x) := cmul(w2(x),w2(x))[2];
+Numerisches Testen auf Wurzeleigenschaft:
 
-/*
-plot3d(rw12([a,b]) - a, [a,-100,100], [b,-100,100]);
-plot3d(iw12([a,b]) - b, [a,-100,100], [b,-100,100]);
-
-plot3d(rw22([a,b]) - a, [a,-100,100], [b,-100,100]);
-plot3d(iw22([a,b]) - b, [a,-100,100], [b,-100,100]);
-*/
-
-/*
+bf_fmin_cobyla(-cabs(capow(w1([a,b]),2) - [a,b]), [a, b], [0,0], constraints = [a <= 3, a >= -3, b <= 3, b >= -3]);
 
 Beweisen der Wurzeleigenschaften, mittels Fallunterscheidung:
 
@@ -140,6 +163,7 @@ rootscontract(cmul(w2([a,b]),w2([a,b])));
   [a,-sqrt(b^2)]
 
 */
+
 
 /* Matrix-Darstellung von komplexen Zahlen [a,b]:
 
@@ -375,22 +399,28 @@ radcan(cpow([a,b],[1,0],0));
 
 "z^1" = cpow(z,[1,0],k) = exp(cmul(clog(z,k), [1,0])) = exp(clog(z,k)) = z. QED
 
-Ganzzahlige Exponenten numerisch:
 
-plot3d(cabs(cpow([a,b],[1,0],0) - capow([a,b],1)), [a,-2,2], [b,-2,2], [grid,31,31]);
-plot3d(cabs(cpow([a,b],[2,0],0) - capow([a,b],2)), [a,-2,2], [b,-2,2], [grid,31,31]);
-plot3d(cabs(cpow([a,b],[3,0],0) - capow([a,b],3)), [a,-2,2], [b,-2,2], [grid,31,31]);
-plot3d(cabs(cpow([a,b],[4,0],0) - capow([a,b],4)), [a,-2,2], [b,-2,2], [grid,31,31]);
-plot3d(cabs(cpow([a,b],[5,0],0) - capow([a,b],5)), [a,-2,2], [b,-2,2], [grid,31,31]);
-plot3d(cabs(cpow([a,b],[-1,0],0) - capow([a,b],-1)), [a,-2,2], [b,-2,2], [grid,31,31]);
-plot3d(cabs(cpow([a,b],[-2,0],0) - capow([a,b],-2)), [a,-2,2], [b,-2,2], [grid,31,31]);
-plot3d(cabs(cpow([a,b],[-3,0],0) - capow([a,b],-3)), [a,-2,2], [b,-2,2], [grid,31,31]);
-plot3d(cabs(cpow([a,b],[-4,0],0) - capow([a,b],-4)), [a,-2,2], [b,-2,2], [grid,31,31]);
-plot3d(cabs(cpow([a,b],[-5,0],0) - capow([a,b],-5)), [a,-2,2], [b,-2,2], [grid,31,31]);
+Ganzzahlige Exponenten:
 
 Das allgemeine Gesetz ist fuer z#0 und ganzzahlige k, n:
 
   cpow(z,[n,0],k) = capow(z,n).
+
+Numerisches Testen:
+bf_fmin_cobyla(-cabs(cpow([a,b],[1,0],0) - capow([a,b],1)), [a, b], [1,1], constraints = [a <= 3, a >= -3, b <= 3, b >= -3]);
+bf_fmin_cobyla(-cabs(cpow([a,b],[2,0],0) - capow([a,b],2)), [a, b], [1,1], constraints = [a <= 3, a >= -3, b <= 3, b >= -3]);
+
+Bestaetigt Gesetz numerisch.
+Symbolisch scheint es schwieriger:
+assume(a > 0);
+assume(b >= 0);
+radcan(cpow([a,b],[2,0],k) - capow([a,b],2));
+  [(b^2+a^2)*cos(2*atan(b/a))+b^2-a^2,(b^2+a^2)*sin(2*atan(b/a))-2*a*b]
+f(a,b) := (b^2+a^2)*cos(2*atan(b/a))+b^2-a^2;
+radcan(f(1,2));
+  5*cos(2*atan(2))+3
+float(bfloat(f(1,2)));
+  -1.142987391282275E-100
 
 
 Basis %e ergibt cexp:
@@ -404,10 +434,25 @@ k:0;
 plot2d([cpow([%e,0],[x,0],k)[1], cpow([%e,0],[x,0],k)[2]], [x,-2,2]);
 Fuer wachsendes abs(k) >= 1 ergeben sich immer hoeherfrequente Schwingungen.
 
-Welche Rechenregeln gelten fuer b^x, b > 0, x komplex, fester Zweig?
+Welche der Regeln fuer cexp koennen verallgemeinert werden?
 
 
-Potenzregel (a^b)^c = a^(b*c) ?
+0) Welche Rechenregeln gelten fuer b^x, b > 0, x komplex, fester Zweig?
+(In Verallgemeinerung von cexp(x) = cpow([%e,0], x, 0).)
+
+
+1) Potenzregel a^(b+c) = a^b * a^c
+
+Hier wird natuerlicherweise fuer "a^x" immer der gleiche Zweig verwendet, und dann gilt es.
+
+declare(k, integer);
+assume(a > 0);
+assume(b >= 0);
+radcan(exponentialize(cpow([a,b], [c,d]+[e,f], k) - cmul(cpow([a,b],[c,d],k), cpow([a,b],[e,f],k))));
+  [0,0]
+
+
+2) Potenzregel (a^b)^c = a^(b*c) ?
 Wann gilt
 
   cpow(cpow(a,b,k), c, k') = cpow(a, cmul(b, c), k'') ?
@@ -438,10 +483,26 @@ Spezialfall:
 
 Hier ist also k'' beliebig, und man kann k' = cbranch(cmul(b, clog(a,k))) waehlen.
 
+Anderer Spezialfall:
+
+  cexp(cmul(z, z')) = cpow(cexp(z), z', k) ?
+
+k = cbranch(z) ist eine Loesung.
 
 */
 
 /* Testen von (1): */
+test_powadd(v, k) := block(
+  [a:[v[1],v[2]],b:[v[3],v[4]],c:[v[5],v[6]], old_prec:fpprec, res],
+  fpprec : 2000,
+  res : float(bfloat(cpow(a, b+c, k) - cmul(cpow(a,b,k), cpow(a,c,k)))),
+  fpprec : old_prec,
+  res)$
+/*
+bf_fmin_cobyla(-cabs(test_powadd([a,b,c,d,e,f],0)), [a,b,c,d,e,f], [1,1,0,0,0,0]);
+*/
+
+/* Testen von (2): */
 test_powmul(v, k) := block(
   [a:[v[1],v[2]],b:[v[3],v[4]],c:[v[5],v[6]], ks, old_prec:fpprec, res],
   ks : cbranch(cmul(b, clog(a,k))),
@@ -449,5 +510,11 @@ test_powmul(v, k) := block(
   res : float(bfloat(cpow(cpow(a,b,k), c, ks) - cpow(a, cmul(b, c), k))),
   fpprec : old_prec,
   res)$
+/*
+bf_fmin_cobyla(-cabs(test_powmul([a,b,c,d,e,f],0)), [a,b,c,d,e,f], [1,1,0,0,0,0]);
+*/
 /* Spezialfall c=1/b: */
 test_powrec(a,b,k) := cpow(cpow(a,b,k), crec(b), cbranch(cmul(b, clog(a,k))))$
+/* Spezialfall a=%e: */
+test_powexp(z1,z2) := cexp(cmul(z1, z2)) - cpow(cexp(z1), z2, cbranch(z1));
+
