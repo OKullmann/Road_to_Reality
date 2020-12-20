@@ -314,7 +314,7 @@ is(-sqrt(a^2) = a);
 */
 
 /* Fuer ganzzahlige k: */
-clog(z,k) := [log(cabs(z)), arg_c(z) + k * 2*%pi];
+clog(z,k) := if z=[0,0] then undef else [log(cabs(z)), arg_c(z) + k * 2*%pi];
 
 /*
 
@@ -350,7 +350,7 @@ plot3d(test([a,b]), [a,-2,2], [b,-2,2]);
 /* a^b im k-ten Zweig:
   log(a^b) = b * log(a) => exp(log(a^b)) = a^b = exp(b * log(a))
 */
-cpow(a,b,k) := cexp(cmul(clog(a,k), b));
+cpow(a,b,k) := if a=[0,0] then undef else cexp(cmul(clog(a,k), b));
 
 /* Testen auf Quadratwurzel:
 plot3d(cabs(cpow([a,b],[1/2, 0],0) - w1([a,b])), [a,-2,2],[b,0,2]);
@@ -358,21 +358,53 @@ plot3d(cabs(cpow([a,b],[1/2, 0],1) - w1([a,b])), [a,-2,2],[b,-2,0]);
 plot3d(cabs(cpow([a,b],[1/2, 0],1) - w2([a,b])), [a,-2,2],[b,0,2]);
 plot3d(cabs(cpow([a,b],[1/2, 0],0) - w2([a,b])), [a,-2,2],[b,-2,0]);
 
+Exponent 0:
+cpow([a,b], [0,0], k);
+  [1,0]
+
+Exponent 1:
+
 assume(a > 0);
 assume(b >= 0);
 radcan(cpow([a,b],[1,0],0));
-[a,b]
+  [a,b]
+
+forget(a > 0);
+assume(a < 0);
+radcan(cpow([a,b],[1,0],0));
+   [a,b]
 
 "z^1" = cpow(z,[1,0],k) = exp(cmul(clog(z,k), [1,0])) = exp(clog(z,k)) = z. QED
 
+Ganzzahlige Exponenten numerisch:
+
+plot3d(cabs(cpow([a,b],[1,0],0) - capow([a,b],1)), [a,-2,2], [b,-2,2], [grid,31,31]);
+plot3d(cabs(cpow([a,b],[2,0],0) - capow([a,b],2)), [a,-2,2], [b,-2,2], [grid,31,31]);
+plot3d(cabs(cpow([a,b],[3,0],0) - capow([a,b],3)), [a,-2,2], [b,-2,2], [grid,31,31]);
+plot3d(cabs(cpow([a,b],[4,0],0) - capow([a,b],4)), [a,-2,2], [b,-2,2], [grid,31,31]);
+plot3d(cabs(cpow([a,b],[5,0],0) - capow([a,b],5)), [a,-2,2], [b,-2,2], [grid,31,31]);
+plot3d(cabs(cpow([a,b],[-1,0],0) - capow([a,b],-1)), [a,-2,2], [b,-2,2], [grid,31,31]);
+plot3d(cabs(cpow([a,b],[-2,0],0) - capow([a,b],-2)), [a,-2,2], [b,-2,2], [grid,31,31]);
+plot3d(cabs(cpow([a,b],[-3,0],0) - capow([a,b],-3)), [a,-2,2], [b,-2,2], [grid,31,31]);
+plot3d(cabs(cpow([a,b],[-4,0],0) - capow([a,b],-4)), [a,-2,2], [b,-2,2], [grid,31,31]);
+plot3d(cabs(cpow([a,b],[-5,0],0) - capow([a,b],-5)), [a,-2,2], [b,-2,2], [grid,31,31]);
+
+Das allgemeine Gesetz ist fuer z#0 und ganzzahlige k, n:
+
+  cpow(z,[n,0],k) = capow(z,n).
+
+
+Potenzregel (a^b)^c = a^(b*c) ?
 Wann gilt
 
-  cpow(cpow(z,z',k), z'', k') = cpow(z, cmul(z', z''), k'') ??
+  cpow(cpow(z,z',k), z'', k') = cpow(z, cmul(z', z''), k'') ?
+Aufgabe ist es, die Tripel (k,k',k'') zu bestimmen.
 
 Spezialfall:
 
   cpow(cpow(z,z', k), crec(z'), k') = cpow(z, cmul(z', crec(z')), k'') = cpow(z, 1, k'') = z ?
 
+Hier ist also k'' beliebig.
 Gibt es immer solche k, k'? Wenn ja, dann welche?
 
 */
