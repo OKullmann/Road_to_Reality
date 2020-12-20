@@ -396,14 +396,44 @@ Das allgemeine Gesetz ist fuer z#0 und ganzzahlige k, n:
 Potenzregel (a^b)^c = a^(b*c) ?
 Wann gilt
 
-  cpow(cpow(z,z',k), z'', k') = cpow(z, cmul(z', z''), k'') ?
+  cpow(cpow(a,b,k), c, k') = cpow(a, cmul(b, c), k'') ?
 Aufgabe ist es, die Tripel (k,k',k'') zu bestimmen.
+
+Eine Loesung ist:
+
+  k'' = k, k' = cbranch(cmul(b, clog(a,k))). (1)
+
+Denn dann (unter Verwendung von a*b := cmul(a,b)):
+
+    cpow(cpow(a,b,k), c, k') = cexp(c * clog(cexp(b * clog(a,k)), k')
+    = cexp(c * (b * clog(a,k)) (wegen cbranch)
+    = cexp((b * c) * clog(a,k'')) = cpow(a, b*c, k'').
+
+Man sieht, dass eine allgemeine Bestimmungsgleichung fuer k'' gegeben ist durch
+
+  cexp((b * c) * clog(a,k)) = cexp((b * c) * clog(a,k'')).
+
+Wenn b=0 oder c=0, dann ist dies immer erfuellt (k'' ist also beliebig).
+Ansonsten ist
+  b*c*clog(a,k) = b*c*clog(a,k'') mod 2pi
+zu loesen.
 
 Spezialfall:
 
   cpow(cpow(z,z', k), crec(z'), k') = cpow(z, cmul(z', crec(z')), k'') = cpow(z, 1, k'') = z ?
 
-Hier ist also k'' beliebig.
-Gibt es immer solche k, k'? Wenn ja, dann welche?
+Hier ist also k'' beliebig, und man kann k' = cbranch(cmul(b, clog(a,k))) waehlen.
+
 
 */
+
+/* Testen von (1): */
+test_powmul(v, k) := block(
+  [a:[v[1],v[2]],b:[v[3],v[4]],c:[v[5],v[6]], ks, old_prec:fpprec, res],
+  ks : cbranch(cmul(b, clog(a,k))),
+  fpprec : 2000,
+  res : float(bfloat(cpow(cpow(a,b,k), c, ks) - cpow(a, cmul(b, c), k))),
+  fpprec : old_prec,
+  res)$
+/* Spezialfall c=1/b: */
+test_powrec(a,b,k) := cpow(cpow(a,b,k), crec(b), cbranch(cmul(b, clog(a,k))))$
