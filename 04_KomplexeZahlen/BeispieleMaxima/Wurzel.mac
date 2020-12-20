@@ -1,7 +1,6 @@
 /* Aufruf mit
 
-  > maxima --userdir="."
-  % load("Wurzel.mac");
+  > maxima --init-mac=Wurzel.mac
 
 */
 
