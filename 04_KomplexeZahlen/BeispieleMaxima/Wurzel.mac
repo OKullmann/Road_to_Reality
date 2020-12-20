@@ -392,11 +392,19 @@ Das allgemeine Gesetz ist fuer z#0 und ganzzahlige k, n:
 
   cpow(z,[n,0],k) = capow(z,n).
 
+
 Basis %e ergibt cexp:
 plot3d(cabs(cexp([a,b]) - cpow([%e,0],[a,b],0)), [a,-2,2], [b,-2,2]);
-Die Zweige sind hier alle gleich:
-  Allgemein ist cpow([a,b], z, k) unabhaengig von k fuer b=0,
-  da ja clog([a,0], k) nur um k*2pi variert im Imaginaerteil.
+cpow([%e,0],[a,b],0);
+  [%e^a*cos(b),%e^a*sin(b)]
+
+Alle Zweige e^z sind verschieden (da ja z.B. fuer z=1/n alle n-ten Wurzeln
+berechnet werden.
+k:0;
+plot2d([cpow([%e,0],[x,0],k)[1], cpow([%e,0],[x,0],k)[2]], [x,-2,2]);
+Fuer wachsendes abs(k) >= 1 ergeben sich immer hoeherfrequente Schwingungen.
+
+Welche Rechenregeln gelten fuer b^x, b > 0, x komplex, fester Zweig?
 
 
 Potenzregel (a^b)^c = a^(b*c) ?
