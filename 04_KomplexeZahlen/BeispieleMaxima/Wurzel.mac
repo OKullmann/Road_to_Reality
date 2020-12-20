@@ -392,6 +392,12 @@ Das allgemeine Gesetz ist fuer z#0 und ganzzahlige k, n:
 
   cpow(z,[n,0],k) = capow(z,n).
 
+Basis %e ergibt cexp:
+plot3d(cabs(cexp([a,b]) - cpow([%e,0],[a,b],0)), [a,-2,2], [b,-2,2]);
+Die Zweige sind hier alle gleich:
+  Allgemein ist cpow([a,b], z, k) unabhaengig von k fuer b=0,
+  da ja clog([a,0], k) nur um k*2pi variert im Imaginaerteil.
+
 
 Potenzregel (a^b)^c = a^(b*c) ?
 Wann gilt
