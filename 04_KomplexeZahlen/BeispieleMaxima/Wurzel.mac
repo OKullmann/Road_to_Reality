@@ -365,5 +365,8 @@ Spezialfall:
   cpow(cpow(z,z', k), crec(z'), k') = cpow(z, cmul(z', crec(z')), k'') = cpow(z, 1, k'') = z ?
 
 Gibt es immer solche k, k'? Wenn ja, dann welche?
+Rechenbeispiel:
+(%i11) float(cpow(cpow([-50000,3000],[2,51],-1), crec([2,51]),86));
+(%o11) [-50000.00000000002,2999.999999999983]
 
 */
