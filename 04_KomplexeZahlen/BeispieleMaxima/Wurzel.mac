@@ -464,7 +464,7 @@ Eine Loesung ist:
 
 Denn dann (unter Verwendung von a*b := cmul(a,b)):
 
-    cpow(cpow(a,b,k), c, k') = cexp(c * clog(cexp(b * clog(a,k)), k')
+    cpow(cpow(a,b,k), c, k') = cexp(c * clog(cexp(b * clog(a,k)), k'))
     = cexp(c * (b * clog(a,k)) (wegen cbranch)
     = cexp((b * c) * clog(a,k'')) = cpow(a, b*c, k'').
 
